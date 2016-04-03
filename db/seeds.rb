@@ -66,7 +66,7 @@ DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Lisibilité et 
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Visibilité et visibilité des panneaux de signalisation, porte, luminosité, présence sonore,  braille, bandes podotactiles…")
 DetailedCriterion.create!(handicap: h, criterion: movement, tooltip: "Horizontale: Contraste de couleurs, visibilité et lisibilité des panneaux de signalisation, Bande podotactiles, qualité de l’éclairage. Verticale: Ascenseur. (retransmission vocales des informations + brailles)…")
 DetailedCriterion.create!(handicap: h, criterion: avail, tooltip: "Sensibilisation du personnel.")
-DetailedCriterion.create!(handicap: h, criterion: access, tooltip: "Délocalisation de l’offre, délivrance du service, accompagnement du personnel, écriture en brail…")
+DetailedCriterion.create!(handicap: h, criterion: access, tooltip: "Délocalisation de l’offre, délivrance du service, accompagnement du personnel, écriture en braille…")
 puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
 #### HEARING

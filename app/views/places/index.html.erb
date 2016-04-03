@@ -20,6 +20,10 @@
   </tbody>
 </table>
 
-<br>
+<%# TODO: INSERT MAP %>
+<%# TODO: DISPLAY YELP DATA %>
 
-<%= link_to 'New Place', new_place_path %>
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Place', new_place_path %>
+<% end %>

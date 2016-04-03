@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem "geocoder"
+gem "yelp"
 
 group :development, :test do
   gem 'binding_of_caller'
@@ -26,8 +27,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-
-
 end
 
 group :production do

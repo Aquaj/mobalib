@@ -24,6 +24,8 @@
   </p>
 <% end %>
 
+<%# TODO: INSERT YELP DATA USING YELP_ID ATTRIBUTE IN @PLACE %>
+
 <% if user_signed_in? && !@place.ratings.map(&:user).include?(current_user)%>
   <%= link_to 'Vote', new_place_rating_path(@place) %>
 <% end %>

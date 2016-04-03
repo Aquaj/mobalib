@@ -1,12 +1,50 @@
-<%= simple_form_for(@place) do |f| %>
-  <%= f.error_notification %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <%= simple_form_for(@place) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address %>
-  </div>
+        <div class="form-inputs">
+          <%= f.input :name, input_html: { id: "name_autocomplete" } %>
+          <%= f.input :address, input_html: { id: "address_autocomplete" } %>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
+
+
+<% content_for :after_js do %>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%= ENV['GOOGLE_API_KEY'] %>">
+  </script>
+
+  <script>
+    function initializeAutocomplete(id) {
+      var element = document.getElementById(id);
+      if (element) {
+        var autocomplete = new google.maps.places.Autocomplete(element,
+          { bounds: new google.maps.LatLngBounds(new google.maps.LatLng(44.910825, -0.485052), new google.maps.LatLng(44.769138, -0.683853)) }
+          );
+        // Bounds are Bordeaux, defined by hand on Google Maps - how neat. #DIRTYFIX
+        google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+      }
+    }
+
+    function onPlaceChanged() {
+      var place = this.getPlace();
+      console.log(place);
+      document.getElementById('name_autocomplete').value = place.name;
+      document.getElementById('address_autocomplete').value = place.formatted_address;
+    }
+
+    google.maps.event.addDomListener(window, 'load', function() {
+      initializeAutocomplete('name_autocomplete');
+      initializeAutocomplete('address_autocomplete');
+    });
+  </script>
 <% end %>
