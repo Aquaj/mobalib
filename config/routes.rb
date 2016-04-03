@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  root "places#index"
+  resources :places, only: [:index, :show, :new, :create] do
+    resources :ratings, only: [:create, :new]
+  end
+  devise_for :users, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

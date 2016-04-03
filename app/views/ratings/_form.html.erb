@@ -1,0 +1,13 @@
+<%= simple_form_for [@place, @rating] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <% current_user.handicap.detailed_criterions.each_with_index do |crit, i| %>
+      <%= f.input "value#{i+1}".to_sym, as: :radio_buttons, collection: 0...3, label: crit.to_h[:name] %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
