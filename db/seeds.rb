@@ -153,7 +153,7 @@ raw_data.each_with_index do |p, index|
   Place.find_or_initialize_by(name: place[titles.index("ETABLISSEMENT")])
     .update_attributes!(
       certification: "Label Tourisme-Handicap",
-      address: "#{address} #{postcode} #{city}"
+      address: "#{address} #{'0'*(5-postcode.length)+postcode} #{city}"
     )
 
   # Counter of the % of completion
