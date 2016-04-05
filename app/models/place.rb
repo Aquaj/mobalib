@@ -1,5 +1,5 @@
 class Place < ActiveRecord::Base
-  has_many :ratings
+  has_many :ratings, dependent: :delete
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   after_validation :yelpify, if: :address_changed?

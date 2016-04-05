@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :handicap
-  has_many :ratings
+  has_many :ratings, dependent: :delete
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
