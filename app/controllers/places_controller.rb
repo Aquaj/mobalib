@@ -1,14 +1,14 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # GET /places
   def index
-    @places = Place.sort
-    if search && !search(params[:search][:term])
-      @yelp_places = Yelp.client.search(params[:search][:term]).businesses
+    @places = Place.sorted
+    #if search && !search(params[:search][:term])
+      # @yelp_places = Yelp.client.search(params[:search][:term]).businesses
       # TODO : Revoir ça.
-    end
+    #end
   end
 
   # GET /places/4

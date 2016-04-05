@@ -1,24 +1,32 @@
-<h1>Listing Places</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container-fluid">
+  <div class="row">
     <% @places.each do |place| %>
-      <tr>
-        <td><%= place.name %></td>
-        <td><%= place.address %></td>
-        <td><%= link_to 'Show', place %></td>
-      </tr>
+      <%= link_to place do %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="height-card square-corners white shadowed flex medium-margin">
+            <%# cl_image_tag place.photo.path, width: 300, height: 300, crop: :lfill, alt: "Photo de #{place.name}", class: "flex-left no-margins" %>
+            <img src="http://placehold.it/150/tech" style="width: 150px; height: 150px;">
+            <div class="flex-expand flex column">
+              <div class="flex-expand">
+                <h2 class="name-sized"><%= place.name %></h2>
+                <p><%= place.address %></p>
+              </div>
+              <div class="space-around">
+                <% place.average_ratings_by_handicap.each do |handikey, rating| %>
+                  <div class="handicon handicon-small <%= color_by_rating(rating) %> rounded-corners center medium-margin-bottom">
+                    <%# icon(handikey), class: "flex-center white" %>
+                    <p>Y<p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <%# TODO: INSERT MAP %>
 <%# TODO: DISPLAY YELP DATA %>

@@ -1,33 +1,43 @@
-<p>
-  <strong>Nom:</strong>
-  <%= @place.name %>
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8 height-half-screen">
+      <h2><%= @place.name %></h2>
+      <p><%= @place.address %></p>
+      <% if @place.yelp_id %>
+        <p>Yelp data</p>
+      <% end %>
+    </div>
+    <div class="col-sm-4 center height-half-screen">
+      <div class="full-width flex space-around">
+        <% @place.average_ratings_by_handicap.each do |handikey, rating| %>
+          <div class="flex column">
+            <div class="handicon handicon-small <%= color_by_rating(rating) %> rounded-corners flex center medium-margin-bottom">
+            <%# icon(handikey), class: "flex-center white" %>
+              <p><%= handikey %></p>
+            </div>
+              <div class="flex column center">
+              <% @place.ratings_for(handikey).each do |criterion, score| %>
+                <div class="handicon handicon-small <%= color_by_rating(score) %> rounded-corners flex center small-margin-bottom">
+                  <p><%= criterion %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-4 col-sm-push-8 height-half-screen">
+      <iframe
+        width="600"
+        height="450"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= URI.encode(map_address(@place)) %>"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="col-sm-pull-4 col-sm-8 height-half-screen center">
+      <p>Pas encore de reviews? Laissez votre avis?</p>
+    </div>
+  </div>
+</div>
 
-<% if @place.is_certified? %>
-  <p>
-    <strong>Cet établissement est certifié par: </strong><%= @place.certification %>
-  </p>
-<% end %>
-<p>
-  <strong>Adresse:</strong>
-  <%= @place.address %>
-</p>
-
-<% @place.ratings.each do |rat| %>
-  <p>
-  <strong><%= rat.user.name %></strong>
-  <ul>
-    <% rat.values.each_with_index do |val, i| %>
-      <li><strong><%= rat.user.handicap.detailed_criterions[i].criterion.name %></strong>: <%= val %></li>
-    <% end %>
-  </ul>
-  </p>
-<% end %>
-
-<%# TODO: INSERT YELP DATA USING YELP_ID ATTRIBUTE IN @PLACE %>
-
-<% if user_signed_in? && !@place.ratings.map(&:user).include?(current_user)%>
-  <%= link_to 'Vote', new_place_rating_path(@place) %>
-<% end %>
-
-<%= link_to 'Back', places_path %>

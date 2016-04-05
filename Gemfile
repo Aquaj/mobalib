@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 
 gem 'sass-rails'
+gem "coffee-rails"
 gem 'jquery-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
@@ -18,7 +19,16 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 gem "geocoder"
+gem "gmaps4rails"
 gem "yelp"
+
+gem "cloudinary"
+gem "attachinary"
+gem "jquery-fileupload-rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'
