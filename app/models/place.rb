@@ -61,7 +61,7 @@ class Place < ActiveRecord::Base
     Handicap.all.each do |handicap|
       values = self.ratings
       .select { |rating| rating.user.handicap == handicap }
-      .map { |rating| rating.values.reduce(&:+)/5 }
+      .map { |rating| rating.values.reduce(&:+)/rating.values.length }
       if values.length != 0
         arbh[handicap.name] = values.reduce(&:+)/values.length
       else

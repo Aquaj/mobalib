@@ -5,6 +5,9 @@ puts "Seed started."
 User.destroy_all
 Place.destroy_all
 Rating.destroy_all
+DetailedCriterion.destroy_all
+Handicap.destroy_all
+Criterion.destroy_all
 puts "  -- Pre-emptive removal of all of DB entries."
 
 #############   HANDICAPS AND CRITERIA OF VOTE FROM USERS   ############
