@@ -1,13 +1,32 @@
 <%= simple_form_for [@place, @rating] do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <% current_user.handicap.detailed_criterions.each_with_index do |crit, i| %>
-      <%= f.input "value#{i+1}".to_sym, as: :radio_buttons, collection: 0...3, label: crit.to_h[:name] %>
-    <% end %>
-  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <% current_user.handicap.detailed_criterions.each_with_index do |crit, i| %>
+        <% if i == 0 %>
+          <div class="col-sm-2 col-sm-offset-1 center">
+        <% else %>
+          <div class="col-sm-2 center">
+        <% end %>
+        <%= f.input "value#{i+1}".to_sym, as: :radio_buttons, label: crit.criterion.name, error: false do%>
+          <div class="center">
+            <%= f.collection_radio_buttons "value#{i+1}", (0..2), :to_i, :next, boolean_style: :inline, item_wrapper_tag: :div do |b| %>
+              <%= b.radio_button class: 'hidden-input' %>
+              <%= b.label do %>
+                <div class="clickable handicon handicon-small <%= color_by_rating(b.value) %> rounded-corners center medium-margin-bottom">
+                  <%= b.value %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+    </div>
+    <div class="form-actions center">
+      <%= f.button :submit %>
+    </div>
   </div>
-<% end %>
+  <% end %>

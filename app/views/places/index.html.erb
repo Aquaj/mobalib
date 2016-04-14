@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="row">
     <% @places.each do |place| %>
@@ -28,8 +27,3 @@
 
 <%# TODO: INSERT MAP %>
 <%# TODO: DISPLAY YELP DATA %>
-
-<br>
-<% if user_signed_in? %>
-  <%= link_to 'New Place', new_place_path %>
-<% end %>

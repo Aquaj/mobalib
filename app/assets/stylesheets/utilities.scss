@@ -1,0 +1,156 @@
+@media(max-width: 480px){
+  .hidden-mobile{
+    display: none;
+  }
+}
+
+.height-card{
+  height: 150px;
+}
+.height-half-screen{
+  height: calc(50vh - 35px);
+}
+
+.full-width{
+  width: 100%;
+}
+.full-height{
+  height: 100%;
+}
+
+.side-bordered{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.top-bordered{
+  border-top: 1px solid black;
+}
+.bottom-bordered{
+  border-bottom: 1px solid black;
+}
+
+.square-corners {
+  border-radius: 0;
+}
+.rounded-corners {
+  border-radius: 3px;
+}
+.shadowed {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.flex {
+  display: flex;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+.flex-expand {
+  flex: 1;
+}
+.flex-left {
+  justify-content: start;
+}
+.flex-right {
+  justify-content: end;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.space-around{
+  display: flex;
+  justify-content: space-around;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.absolute{
+  position: absolute;
+}
+.absolutely-top{
+  position: absolute;
+  top: 15px;
+}
+.absolutely-right{
+  position: absolute;
+  right: 15px;
+}
+
+.no-margins {
+  margin: 0;
+}
+.medium-margin{
+  margin: 15px;
+}
+.medium-margin-bottom{
+  margin-bottom: 15px;
+}
+.small-margin-bottom{
+  margin-bottom: 5px;
+}
+.medium-margin-side {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.small-margin-side {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.scrollable {
+  overflow-y: auto;
+}
+
+.no-padding {
+  padding: 0;
+}
+.small-padding-top{
+  padding: 5px;
+}
+.medium-padding{
+  padding: 15px;
+}
+
+.name-sized {
+  font-size: 16px;
+}
+
+.handicon {
+  color: white;
+  font-size: 24px;
+}
+.handicon-small {
+  width: 30px;
+  height: 30px;
+}
+.handicon-medium {
+  width: 70px;
+  height: 70px;
+}
+.handicon-large {
+  width: 100px;
+  height: 100px;
+}
+
+.red {
+  background-color: #dd1111;
+}
+.orange {
+  background-color: #dd6611;
+}
+.green {
+  background-color: #11dd11;
+}
+.grey {
+  background-color: #888888;
+}
+.white {
+  background-color: #ffffff;
+}

@@ -14,6 +14,8 @@
 @import "pages/index";
 @import "vendor/index";
 
+@import "utilities";
+
 body {
   height: calc(100vh - 70px);
 }

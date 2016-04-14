@@ -6,6 +6,10 @@
       <% if @place.yelp_id %>
         <p>Yelp data goes here.</p>
       <% end %>
+      <div class="absolutely-top absolutely-right">
+        <%= icon("universal-access") %>
+        <p>Validé par le label Tourisme-Handicap</p>
+      </div>
     </div>
     <div class="col-sm-4 center height-half-screen">
       <div class="full-width flex space-around">
@@ -13,7 +17,7 @@
           <div class="flex column">
             <div class="handicon handicon-small icon-handi-<%= handikey %> <%= color_by_rating(rating) %> rounded-corners medium-margin-bottom center">
             </div>
-              <div class="flex column center">
+            <div class="flex column center">
               <% @place.ratings_for(handikey).each do |criterion, score| %>
                 <div class="handicon handicon-small <%= color_by_rating(score) %> rounded-corners flex center small-margin-bottom center">
                   <%= criterion.first %>
@@ -48,8 +52,13 @@
         </div>
       <% else %>
         <div class="column scrollable">
+          <% if user_signed_in? && !@place.ratings.find { |r| r.user == current_user } %>
+            <div class="center column full-width top-bordered square-corners white medium-padding small-padding-top">
+              <p><%= link_to "Laissez nous votre avis !", new_place_rating_path(@place) %></p>
+            </div>
+          <% end %>
           <% @place.ratings.each do |rating| %>
-            <div class="center column full-width bottom-bordered top-bordered square-corners white medium-padding small-padding-top">
+            <div class="center column full-width top-bordered square-corners white medium-padding small-padding-top">
               <div class="name-sized medium-margin-bottom full-width">
                 <%= rating.user.fname %> <%= rating.user.lname.first %>
               </div>
