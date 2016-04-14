@@ -14,9 +14,7 @@
               </div>
               <div class="space-around">
                 <% place.average_ratings_by_handicap.each do |handikey, rating| %>
-                  <div class="handicon handicon-small <%= color_by_rating(rating) %> rounded-corners center medium-margin-bottom">
-                    <%# icon(handikey), class: "flex-center white" %>
-                    <p>Y<p>
+                  <div class="handicon handicon-small icon-handi-<%= handikey %> <%= color_by_rating(rating) %> rounded-corners center medium-margin-bottom">
                   </div>
                 <% end %>
               </div>

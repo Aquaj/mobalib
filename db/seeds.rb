@@ -24,7 +24,7 @@ puts "  -- Criteria generated !"
 #### MOTOR
 puts "  -- Generating Handicaps."
 
-h = Handicap.create!(name: "Fauteuil manuel")
+h = Handicap.create!(name: "Fauteuil manuel", handikey: "chaise")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Visibilité, lisibilité de l’enseigne, praticabilité du cheminement…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Porte, rampe…")
@@ -33,7 +33,7 @@ DetailedCriterion.create!(handicap: h, criterion: equip, tooltip: "Sanitaire")
 DetailedCriterion.create!(handicap: h, criterion: access, tooltip: "Délocalisation de l’offre, livraison du service, animaux…")
 puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
-h = Handicap.create!(name: "Fauteuil électrique")
+h = Handicap.create!(name: "Fauteuil électrique", handikey: "motor")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Visibilité, lisibilité de l’enseigne, praticabilité du cheminement…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Porte, rampe…")
@@ -42,7 +42,7 @@ DetailedCriterion.create!(handicap: h, criterion: equip, tooltip: "Sanitaire")
 DetailedCriterion.create!(handicap: h, criterion: access, tooltip: "Délocalisation de l’offre, livraison du service…")
 puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
-h = Handicap.create!(name: "Marchand")
+h = Handicap.create!(name: "Marchand", handikey: "bequille")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Visibilité, ramp, vilisibilité de l’enseigne, praticabilité du cheminement…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Porte, rampe, main courante…")
@@ -53,7 +53,7 @@ puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
 #### SIGHT
 
-h = Handicap.create!(name: "Aveugle")
+h = Handicap.create!(name: "Aveugle", handikey: "aveugle")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Bandes podotactiles, cheminement, environnement immédiat sécurisé…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Porte, main courante, indication et information sonore, porte, braille, bandes podotactiles…")
@@ -62,7 +62,7 @@ DetailedCriterion.create!(handicap: h, criterion: avail, tooltip: "Sensibilisati
 DetailedCriterion.create!(handicap: h, criterion: access, tooltip: "Délocalisation de l’offre, délivrance du service, accès aux animaux,  accompagnement du personnel, écriture en brail…")
 puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
-h = Handicap.create!(name: "Malvoyant")
+h = Handicap.create!(name: "Malvoyant", handikey: "mal-voyant")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Lisibilité et visibilité de l’enseigne, lisibilité et visibilité des panneaux de signalisation, cheminement, environnement immédiat sécurisé…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Visibilité et visibilité des panneaux de signalisation, porte, luminosité, présence sonore,  braille, bandes podotactiles…")
@@ -73,7 +73,7 @@ puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
 #### HEARING
 
-h = Handicap.create!(name: "Malentendant")
+h = Handicap.create!(name: "Malentendant", handikey: "malentendant")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Cheminement, parking, environnement immédiat sécurisé…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "sonnette (signaux visuels de présence),  boucle magnétique…")
@@ -82,7 +82,7 @@ DetailedCriterion.create!(handicap: h, criterion: avail, tooltip: "Sensibilisati
 DetailedCriterion.create!(handicap: h, criterion: access, tooltip: "Délocalisation de l’offre,  délivrance du service, accompagnement du personnel...")
 puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
-h = Handicap.create!(name: "Sourd")
+h = Handicap.create!(name: "Sourd", handikey: "sourd")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Cheminement, parking, route traversée,environnement immédiat sécurisé...")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "sonnette (signaux visuels de présence)…")
@@ -93,7 +93,7 @@ puts "     -- Detailed Criteria generated for Handicap [#{h.name}] !"
 
 #### MENTAL
 
-h = Handicap.create!(name: "Handicap mental")
+h = Handicap.create!(name: "Handicap mental", handikey: "mental")
 puts "     -- Generating Detailed Criteria for Handicap [#{h.name}]."
 DetailedCriterion.create!(handicap: h, criterion: ext, tooltip: "Cheminement, lisibilité de l’enseigne, lisibilité et visibilité des panneaux de signalisation, environnement immédiat sécurisé…")
 DetailedCriterion.create!(handicap: h, criterion: entry, tooltip: "Accès simple et bien identifié…")

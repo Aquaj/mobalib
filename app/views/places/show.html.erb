@@ -4,21 +4,19 @@
       <h2><%= @place.name %></h2>
       <p><%= @place.address %></p>
       <% if @place.yelp_id %>
-        <p>Yelp data</p>
+        <p>Yelp data goes here.</p>
       <% end %>
     </div>
     <div class="col-sm-4 center height-half-screen">
       <div class="full-width flex space-around">
         <% @place.average_ratings_by_handicap.each do |handikey, rating| %>
           <div class="flex column">
-            <div class="handicon handicon-small <%= color_by_rating(rating) %> rounded-corners flex center medium-margin-bottom">
-            <%# icon(handikey), class: "flex-center white" %>
-              <p><%= handikey %></p>
+            <div class="handicon handicon-small icon-handi-<%= handikey %> <%= color_by_rating(rating) %> rounded-corners medium-margin-bottom center">
             </div>
               <div class="flex column center">
               <% @place.ratings_for(handikey).each do |criterion, score| %>
-                <div class="handicon handicon-small <%= color_by_rating(score) %> rounded-corners flex center small-margin-bottom">
-                  <p><%= criterion %></p>
+                <div class="handicon handicon-small <%= color_by_rating(score) %> rounded-corners flex center small-margin-bottom center">
+                  <%= criterion.first %>
                 </div>
               <% end %>
             </div>
@@ -26,17 +24,37 @@
         <% end %>
       </div>
     </div>
-    <div class="col-sm-4 col-sm-push-8 height-half-screen">
+    <div class="col-sm-4 col-sm-push-8 no-padding height-half-screen">
       <iframe
-        width="600"
-        height="450"
+        width="100%"
+        height="100%"
         frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= URI.encode(map_address(@place)) %>"
         allowfullscreen>
       </iframe>
     </div>
-    <div class="col-sm-pull-4 col-sm-8 height-half-screen center">
-      <p>Pas encore de reviews? Laissez votre avis?</p>
+    <div class="col-sm-pull-4 col-sm-8 height-half-screen">
+      <% if @place.ratings.blank? %>
+        <div class="center">
+          <p>Pas encore de reviews. </p>
+          <p><%= link_to "Laissez nous votre avis !", new_place_rating_path(@place) %></p>
+        </div>
+      <% else %>
+        <div class="column flex-left scrollable">
+          <% @place.ratings.each do |rating| %>
+            <div class="center column full-width bottom-bordered top-bordered square-corners white medium-padding small-padding-top">
+              <div class="name-sized medium-margin-bottom full-width">
+                <%= rating.user.fname %> <%= rating.user.lname.first %>
+              </div>
+              <div class="full-width center">
+                <% rating.details.each do |crit, value| %>
+                  <div class="handicon handicon-small icon-handi-<%= crit %> <%= color_by_rating(value) %> rounded-corners small-margin-side center flex flex-left"><%= crit.first %></div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

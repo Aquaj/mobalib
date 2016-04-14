@@ -34,16 +34,15 @@ class Place < ActiveRecord::Base
 
   def ratings_for(handikey)
     result = Hash.new(nil)
-    handicap = Handicap.find_by_name(handikey)
+    handicap = Handicap.find_by_handikey(handikey)
     handicap.detailed_criterions.each do |dc|
       result[dc.criterion.name] = []
     end
     self.ratings
     .select { |rating| rating.user.handicap == handicap }
     .each do |review|
-      review.values.each_with_index do |value, index|
-        crit = handicap.detailed_criterions[index].criterion.name
-        result[crit] << value
+      review.details.each do |crit, v|
+        result[crit] << v
       end
     end
     result.each do |k, v|
@@ -63,9 +62,9 @@ class Place < ActiveRecord::Base
       .select { |rating| rating.user.handicap == handicap }
       .map { |rating| rating.values.reduce(&:+)/rating.values.length }
       if values.length != 0
-        arbh[handicap.name] = values.reduce(&:+)/values.length
+        arbh[handicap.handikey] = values.reduce(&:+)/values.length
       else
-        arbh[handicap.name] = nil
+        arbh[handicap.handikey] = nil
       end
     end
     arbh

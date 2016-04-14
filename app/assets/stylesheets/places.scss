@@ -17,6 +17,12 @@
   border-left: 1px solid black;
   border-right: 1px solid black;
 }
+.top-bordered{
+  border-top: 1px solid black;
+}
+.bottom-bordered{
+  border-bottom: 1px solid black;
+}
 
 .square-corners {
   border-radius: 0;
@@ -35,9 +41,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  vertical-align: middle;
 }
 .flex-expand {
   flex: 1;
+}
+.flex-left {
+  justify-content: start;
+}
+.flex-right {
+  justify-content: end;
 }
 .space-between {
   display: flex;
@@ -64,6 +78,28 @@
 .small-margin-bottom{
   margin-bottom: 5px;
 }
+.medium-margin-side {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.small-margin-side {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.scrollable {
+  overflow-y: auto;
+}
+
+.no-padding {
+  padding: 0;
+}
+.small-padding-top{
+  padding: 5px;
+}
+.medium-padding{
+  padding: 15px;
+}
 
 .name-sized {
   font-size: 16px;
@@ -71,6 +107,7 @@
 
 .handicon {
   color: white;
+  font-size: 24px;
 }
 .handicon-small {
   width: 30px;
