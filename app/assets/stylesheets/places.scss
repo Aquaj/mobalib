@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@media(max-width: 480px){
+  .hidden-mobile{
+    display: none;
+  }
+}
+
 .height-card{
   height: 150px;
 }
@@ -11,6 +17,9 @@
 
 .full-width{
   width: 100%;
+}
+.full-height{
+  height: 100%;
 }
 
 .side-bordered{
