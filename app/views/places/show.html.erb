@@ -29,18 +29,18 @@
         width="100%"
         height="100%"
         frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= URI.encode(map_address(@place)) %>"
+        src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_API_KEY'] %>&q=<%= URI.encode(map_address(@place)).downcase %>"
         allowfullscreen>
       </iframe>
     </div>
     <div class="col-sm-pull-4 col-sm-8 height-half-screen">
       <% if @place.ratings.blank? %>
-        <div class="center">
+        <div class="center column">
           <p>Pas encore de reviews. </p>
           <p><%= link_to "Laissez nous votre avis !", new_place_rating_path(@place) %></p>
         </div>
       <% else %>
-        <div class="column flex-left scrollable">
+        <div class="column scrollable">
           <% @place.ratings.each do |rating| %>
             <div class="center column full-width bottom-bordered top-bordered square-corners white medium-padding small-padding-top">
               <div class="name-sized medium-margin-bottom full-width">
