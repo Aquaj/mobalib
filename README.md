@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates)
+Mobalib — Project from Startup Weekend Bordeaux 04/2016
